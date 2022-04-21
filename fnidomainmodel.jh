@@ -1,0 +1,33 @@
+entity OppurtunityDetails {
+	crmOppurtunityID String
+    oppurtunityCreatedDate LocalDate
+    crmCustomerID Long
+    bdmName String
+    bdmID String
+    dseID String
+    dseName String
+    accountType String
+    accountName String
+    accountSite String
+   	vehicleClass String
+    vehicleVariant String 
+    engineCapacity String
+    fuelTankCapacity String
+    wheelBase String
+    power String
+    gvwWeight String
+    payloadWeight String
+    exShowRoomPrice Long
+    onRoadPrice Long
+    lob String
+    ppl String
+    pl String    
+    financierSyncStatus FniTOFinancierSyncStatus
+}
+
+entity FniTOFinancierSyncStatus {
+	syncDateTimeStamp LocalDate
+    syncStatus SyncStatus
+    comments String
+}
+
