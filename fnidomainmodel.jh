@@ -1,0 +1,246 @@
+entity OppurtunityDetails {
+	crmOppurtunityID String
+    oppurtunityCreatedDate LocalDate
+    crmCustomerID Long
+    bdmName String
+    bdmID String
+    dseID String
+    dseName String
+    accountType String
+    accountName String
+    accountSite String
+    vehicleDetails VehicleDetails    
+    financierSyncStatus FniTOFinancierSyncStatus
+    crmSyncStatus FniToCRMSyncStatus
+    downPayment Long
+    loanTenure Integer
+    status Boolean
+}
+
+entity CustomerMaster {
+	panNumber String
+    AadharNumber String
+    personalInformation PersonalInformation
+    businessDetails BusinessDetails
+    customerType String
+    customerCategory String
+    customerSubcategory String
+    crmSyncStatus FniToCRMSyncStatus
+    clientID Long
+    status Boolean
+    gst String
+}
+
+entity FinancialInformationQuestionaireResponses {
+	question String
+    response String
+}
+
+entity VehicleDetails{
+	vehicleClass String
+    vehicleVariant String 
+    engineCapacity String
+    fuelTankCapacity String
+    wheelBase String
+    power String
+    gvwWeight String
+    payloadWeight String
+    exShowRoomPrice Double
+    onRoadPrice Double
+    lob String
+    ppl String
+    pl String
+}
+
+entity RecommendedOffersForOppurtunity {
+	loanAmount Long
+    loanTenure Integer
+    interestRate Integer
+    isCurrentFinancier Boolean
+    offerType OfferType
+    isSelectedOffer Boolean
+}
+
+entity FinancierMaster {
+	financierName String
+    financierLogo String
+    website String
+    customerCareNumber String
+}
+
+entity VehicleFinancingDetailsFromFinancier {
+	referenceNumber Integer
+    loanDetails LoanDetails
+    financierPointOfContact FinancierSPOC 
+    vehicleDetails VehicleDetails
+    loanApplicationStage LoanApplicationStage
+    loanApplicationStatus LoanApplicationStatus
+    kycDetails CustomerKYCDetailsReceivedFromFinancier
+    comments String
+    financierSyncStatus FinancierToFniSyncStatus
+}
+
+entity FinancierSPOC {
+	helpdeskNumber String
+    contactNumber String
+    contactName String
+    emailAddress String
+}
+entity CustomerKYCDetailsReceivedFromFinancier {
+	name String
+    cibilScore String
+}
+
+entity LoanDetails {
+	loanApplicatioNumber String
+    sanctionedLoanAmount Double
+    loanTenure Integer
+    emi Double
+    noOfEMIInstallments Integer
+    roi Float
+}
+
+entity EMIPaymentStatus {
+	noOfEMIInstallments Integer
+    noOfEMIPaid Integer
+    loanRepaymentPending Double
+    lastEMIPaidDate LocalDate
+    noOfInstallmentsMissed Integer
+    lastInstallmentMissedDate LocalDate
+}
+
+entity PersonalInformation {
+	FullName String
+    MobileNumber String
+    Gender String
+    MaritalStatus String
+    EmailAddress String
+    DOB LocalDate
+    GuarantorName String
+    Address String
+    State String
+    City String
+    District String
+    Taluka String
+}
+
+entity FniTOFinancierSyncStatus {
+	syncDateTimeStamp LocalDate
+    syncStatus SyncStatus
+    comments String
+}
+
+entity FinancierToFniSyncStatus {
+	syncDateTimeStamp LocalDate
+    syncStatus SyncStatus
+    comments String
+}
+
+entity FniToCRMSyncStatus {
+	syncDateTimeStamp LocalDate
+    syncStatus FniTOFinancierSyncStatus
+    comments String
+}
+
+entity BusinessDetails {
+	NatureOfBusiness Integer
+    IndustryType Integer
+    YearsInCurrentBusiness Integer
+}
+
+entity NatureOfBusiness {
+	code Integer
+    description String
+}
+
+entity IndustryType {
+	code Integer
+    description String
+}
+
+entity YearsOfExperience {
+	code Integer
+    description String
+}
+
+
+
+entity CreditOfferMaster {
+	roi Double
+    loanTenure Double
+    loanPercentage Double
+    loanProcessingFee Double
+    offerStartDate LocalDate
+    offerEndDate LocalDate
+}
+
+entity VehicleMaster {
+	vehicleClass String
+    vehicleVariant String 
+    engineCapacity String
+    fuelTankCapacity String
+    wheelBase String
+    power String
+    gvwWeight String
+    payloadWeight String
+    exShowRoomPrice Double
+    onRoadPrice Double
+    lob String
+    ppl String
+    pl String
+
+}
+relationship OneToMany {
+	OppurtunityDetails to FinancialInformationQuestionaireResponses{oppurtunityDetails}
+    OppurtunityDetails to RecommendedOffersForOppurtunity{oppurtunityDetails}
+    OppurtunityDetails to VehicleFinancingDetailsFromFinancier{oppurtunityDetails}
+    FinancialChecksQuestionMaster to AnswerOption{answers}
+    FinancierMaster to CreditOfferMaster{financierID}
+    VehicleMaster to CreditOfferMaster{vehicleDetails}
+}
+
+relationship OneToOne {
+
+	OppurtunityDetails{customerDetails} to CustomerMaster
+    RecommendedOffersForOppurtunity{financierID} to FinancierMaster
+    VehicleFinancingDetails{financierID} to FinancierMaster
+    VehicleFinancingDetailsFromFinancier{emiPaymentStatus} to EMIPaymentStatus
+    VehicleFinancingDetailsFromFinancier{creditOfferDetails} to CreditOfferMaster
+    VehicleFinancingDetailsFromFinancier{ucstomerKYCDetails} to CustomerKYCDetailsReceivedFromFinancier
+}
+
+enum OfferType{
+	RECOMMENDED, OTHER
+}
+
+enum SyncStatus{
+  PENDING, SUCCESS, FAILED
+}
+
+enum LoanApplicationStage {
+IN_PRINCIPLE_APPROVED,DOCUMENTS_UPLOADED,PHYSICAL_VERIFICATION,CREDIT_APPROVAL,LOAN_DISBURSED,REPAYMENT_STARTED,REPAYMENT_COMPLETED,REJECTED
+}
+
+enum LoanApplicationStatus {
+PENDING,APPROVED,REJECTED
+}
+
+enum QuestionType {
+SINGLE_CHOICE,MULTI_CHOICE,FREE_TEXT
+}
+
+entity FinancialChecksQuestionMaster{
+	content String
+    type QuestionType
+}
+
+entity AnswerOption {
+	answerOption String
+}
+
+entity FinancierToFinancialCheckQuestionMapping {
+	questions String
+    isDefault Boolean
+    financierID Long
+    status Boolean
+}
