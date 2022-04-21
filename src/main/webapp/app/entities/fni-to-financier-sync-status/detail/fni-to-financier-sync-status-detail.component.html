@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fniTOFinancierSyncStatus">
+      <h2 data-cy="fniTOFinancierSyncStatusDetailsHeading"><span>Fni TO Financier Sync Status</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ fniTOFinancierSyncStatus.id }}</span>
+        </dd>
+        <dt><span>Sync Date Time Stamp</span></dt>
+        <dd>
+          <span>{{ fniTOFinancierSyncStatus.syncDateTimeStamp | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Sync Status</span></dt>
+        <dd>
+          <span>{{ fniTOFinancierSyncStatus.syncStatus }}</span>
+        </dd>
+        <dt><span>Comments</span></dt>
+        <dd>
+          <span>{{ fniTOFinancierSyncStatus.comments }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/fni-to-financier-sync-status', fniTOFinancierSyncStatus.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

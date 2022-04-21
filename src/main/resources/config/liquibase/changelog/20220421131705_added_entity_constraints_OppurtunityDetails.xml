@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity OppurtunityDetails.
+    -->
+    <changeSet id="20220421131705-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="financier_sync_status_id"
+                                 baseTableName="oppurtunity_details"
+                                 constraintName="fk_oppurtunity_details__financier_sync_status_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="fni_to_financier_sync_status"/>
+    </changeSet>
+</databaseChangeLog>

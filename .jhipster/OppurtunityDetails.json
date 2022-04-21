@@ -1,0 +1,116 @@
+{
+  "applications": "*",
+  "changelogDate": "20220421131705",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "oppurtunity_details",
+  "fields": [
+    {
+      "fieldName": "crmOppurtunityID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "oppurtunityCreatedDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "crmCustomerID",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "bdmName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bdmID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dseID",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dseName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "accountSite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleClass",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleVariant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "engineCapacity",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fuelTankCapacity",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "wheelBase",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "power",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "gvwWeight",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "payloadWeight",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "exShowRoomPrice",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "onRoadPrice",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "lob",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ppl",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pl",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "OppurtunityDetails",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "fniTOFinancierSyncStatus",
+      "otherEntityRelationshipName": "oppurtunityDetails",
+      "ownerSide": true,
+      "relationshipName": "financierSyncStatus",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "no"
+}
