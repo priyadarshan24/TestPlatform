@@ -1,0 +1,268 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-oppurtunity-details-heading" data-cy="OppurtunityDetailsCreateUpdateHeading">Create or edit a Oppurtunity Details</h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_crmOppurtunityID">Crm Oppurtunity ID</label>
+          <input
+            type="text"
+            class="form-control"
+            name="crmOppurtunityID"
+            id="field_crmOppurtunityID"
+            data-cy="crmOppurtunityID"
+            formControlName="crmOppurtunityID"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_oppurtunityCreatedDate">Oppurtunity Created Date</label>
+          <div class="input-group">
+            <input
+              id="field_oppurtunityCreatedDate"
+              data-cy="oppurtunityCreatedDate"
+              type="text"
+              class="form-control"
+              name="oppurtunityCreatedDate"
+              ngbDatepicker
+              #oppurtunityCreatedDateDp="ngbDatepicker"
+              formControlName="oppurtunityCreatedDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="oppurtunityCreatedDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_crmCustomerID">Crm Customer ID</label>
+          <input
+            type="number"
+            class="form-control"
+            name="crmCustomerID"
+            id="field_crmCustomerID"
+            data-cy="crmCustomerID"
+            formControlName="crmCustomerID"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_bdmName">Bdm Name</label>
+          <input type="text" class="form-control" name="bdmName" id="field_bdmName" data-cy="bdmName" formControlName="bdmName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_bdmID">Bdm ID</label>
+          <input type="text" class="form-control" name="bdmID" id="field_bdmID" data-cy="bdmID" formControlName="bdmID" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_dseID">Dse ID</label>
+          <input type="text" class="form-control" name="dseID" id="field_dseID" data-cy="dseID" formControlName="dseID" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_dseName">Dse Name</label>
+          <input type="text" class="form-control" name="dseName" id="field_dseName" data-cy="dseName" formControlName="dseName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_accountType">Account Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="accountType"
+            id="field_accountType"
+            data-cy="accountType"
+            formControlName="accountType"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_accountName">Account Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="accountName"
+            id="field_accountName"
+            data-cy="accountName"
+            formControlName="accountName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_accountSite">Account Site</label>
+          <input
+            type="text"
+            class="form-control"
+            name="accountSite"
+            id="field_accountSite"
+            data-cy="accountSite"
+            formControlName="accountSite"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_vehicleClass">Vehicle Class</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleClass"
+            id="field_vehicleClass"
+            data-cy="vehicleClass"
+            formControlName="vehicleClass"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_vehicleVariant">Vehicle Variant</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleVariant"
+            id="field_vehicleVariant"
+            data-cy="vehicleVariant"
+            formControlName="vehicleVariant"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_engineCapacity">Engine Capacity</label>
+          <input
+            type="text"
+            class="form-control"
+            name="engineCapacity"
+            id="field_engineCapacity"
+            data-cy="engineCapacity"
+            formControlName="engineCapacity"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_fuelTankCapacity">Fuel Tank Capacity</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fuelTankCapacity"
+            id="field_fuelTankCapacity"
+            data-cy="fuelTankCapacity"
+            formControlName="fuelTankCapacity"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_wheelBase">Wheel Base</label>
+          <input type="text" class="form-control" name="wheelBase" id="field_wheelBase" data-cy="wheelBase" formControlName="wheelBase" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_power">Power</label>
+          <input type="text" class="form-control" name="power" id="field_power" data-cy="power" formControlName="power" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_gvwWeight">Gvw Weight</label>
+          <input type="text" class="form-control" name="gvwWeight" id="field_gvwWeight" data-cy="gvwWeight" formControlName="gvwWeight" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_payloadWeight">Payload Weight</label>
+          <input
+            type="text"
+            class="form-control"
+            name="payloadWeight"
+            id="field_payloadWeight"
+            data-cy="payloadWeight"
+            formControlName="payloadWeight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_exShowRoomPrice">Ex Show Room Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="exShowRoomPrice"
+            id="field_exShowRoomPrice"
+            data-cy="exShowRoomPrice"
+            formControlName="exShowRoomPrice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_onRoadPrice">On Road Price</label>
+          <input
+            type="number"
+            class="form-control"
+            name="onRoadPrice"
+            id="field_onRoadPrice"
+            data-cy="onRoadPrice"
+            formControlName="onRoadPrice"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_lob">Lob</label>
+          <input type="text" class="form-control" name="lob" id="field_lob" data-cy="lob" formControlName="lob" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_ppl">Ppl</label>
+          <input type="text" class="form-control" name="ppl" id="field_ppl" data-cy="ppl" formControlName="ppl" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_pl">Pl</label>
+          <input type="text" class="form-control" name="pl" id="field_pl" data-cy="pl" formControlName="pl" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" for="field_financierSyncStatus">Financier Sync Status</label>
+          <select
+            class="form-control"
+            id="field_financierSyncStatus"
+            data-cy="financierSyncStatus"
+            name="financierSyncStatus"
+            formControlName="financierSyncStatus"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                fniTOFinancierSyncStatusOption.id === editForm.get('financierSyncStatus')!.value?.id
+                  ? editForm.get('financierSyncStatus')!.value
+                  : fniTOFinancierSyncStatusOption
+              "
+              *ngFor="let fniTOFinancierSyncStatusOption of financierSyncStatusesCollection; trackBy: trackFniTOFinancierSyncStatusById"
+            >
+              {{ fniTOFinancierSyncStatusOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
