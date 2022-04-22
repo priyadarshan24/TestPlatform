@@ -1,0 +1,128 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="oppurtunityDetails">
+      <h2 data-cy="oppurtunityDetailsDetailsHeading"><span>Oppurtunity Details</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.id }}</span>
+        </dd>
+        <dt><span>Crm Oppurtunity ID</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.crmOppurtunityID }}</span>
+        </dd>
+        <dt><span>Oppurtunity Created Date</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.oppurtunityCreatedDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Crm Customer ID</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.crmCustomerID }}</span>
+        </dd>
+        <dt><span>Bdm Name</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.bdmName }}</span>
+        </dd>
+        <dt><span>Bdm ID</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.bdmID }}</span>
+        </dd>
+        <dt><span>Dse ID</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.dseID }}</span>
+        </dd>
+        <dt><span>Dse Name</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.dseName }}</span>
+        </dd>
+        <dt><span>Account Type</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.accountType }}</span>
+        </dd>
+        <dt><span>Account Name</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.accountName }}</span>
+        </dd>
+        <dt><span>Account Site</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.accountSite }}</span>
+        </dd>
+        <dt><span>Vehicle Class</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.vehicleClass }}</span>
+        </dd>
+        <dt><span>Vehicle Variant</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.vehicleVariant }}</span>
+        </dd>
+        <dt><span>Engine Capacity</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.engineCapacity }}</span>
+        </dd>
+        <dt><span>Fuel Tank Capacity</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.fuelTankCapacity }}</span>
+        </dd>
+        <dt><span>Wheel Base</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.wheelBase }}</span>
+        </dd>
+        <dt><span>Power</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.power }}</span>
+        </dd>
+        <dt><span>Gvw Weight</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.gvwWeight }}</span>
+        </dd>
+        <dt><span>Payload Weight</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.payloadWeight }}</span>
+        </dd>
+        <dt><span>Ex Show Room Price</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.exShowRoomPrice }}</span>
+        </dd>
+        <dt><span>On Road Price</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.onRoadPrice }}</span>
+        </dd>
+        <dt><span>Lob</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.lob }}</span>
+        </dd>
+        <dt><span>Ppl</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.ppl }}</span>
+        </dd>
+        <dt><span>Pl</span></dt>
+        <dd>
+          <span>{{ oppurtunityDetails.pl }}</span>
+        </dd>
+        <dt><span>Financier Sync Status</span></dt>
+        <dd>
+          <div *ngIf="oppurtunityDetails.financierSyncStatus">
+            <a [routerLink]="['/fni-to-financier-sync-status', oppurtunityDetails.financierSyncStatus?.id, 'view']">{{
+              oppurtunityDetails.financierSyncStatus?.id
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/oppurtunity-details', oppurtunityDetails.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
