@@ -1,0 +1,29 @@
+{
+  "applications": "*",
+  "changelogDate": "20220422053023",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "fni_to_financier_sync_status",
+  "fields": [
+    {
+      "fieldName": "syncDateTimeStamp",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "syncStatus",
+      "fieldType": "SyncStatus",
+      "fieldValues": "PENDING,SUCCESS,FAILED"
+    },
+    {
+      "fieldName": "comments",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "FniTOFinancierSyncStatus",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "no"
+}

@@ -1,0 +1,130 @@
+<div>
+  <h2 id="page-heading" data-cy="OppurtunityDetailsHeading">
+    <span>Oppurtunity Details</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span>Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-oppurtunity-details"
+        [routerLink]="['/oppurtunity-details/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span> Create a new Oppurtunity Details </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="oppurtunityDetails?.length === 0">
+    <span>No oppurtunityDetails found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="oppurtunityDetails && oppurtunityDetails.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span>ID</span></th>
+          <th scope="col"><span>Crm Oppurtunity ID</span></th>
+          <th scope="col"><span>Oppurtunity Created Date</span></th>
+          <th scope="col"><span>Crm Customer ID</span></th>
+          <th scope="col"><span>Bdm Name</span></th>
+          <th scope="col"><span>Bdm ID</span></th>
+          <th scope="col"><span>Dse ID</span></th>
+          <th scope="col"><span>Dse Name</span></th>
+          <th scope="col"><span>Account Type</span></th>
+          <th scope="col"><span>Account Name</span></th>
+          <th scope="col"><span>Account Site</span></th>
+          <th scope="col"><span>Vehicle Class</span></th>
+          <th scope="col"><span>Vehicle Variant</span></th>
+          <th scope="col"><span>Engine Capacity</span></th>
+          <th scope="col"><span>Fuel Tank Capacity</span></th>
+          <th scope="col"><span>Wheel Base</span></th>
+          <th scope="col"><span>Power</span></th>
+          <th scope="col"><span>Gvw Weight</span></th>
+          <th scope="col"><span>Payload Weight</span></th>
+          <th scope="col"><span>Ex Show Room Price</span></th>
+          <th scope="col"><span>On Road Price</span></th>
+          <th scope="col"><span>Lob</span></th>
+          <th scope="col"><span>Ppl</span></th>
+          <th scope="col"><span>Pl</span></th>
+          <th scope="col"><span>Financier Sync Status</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let oppurtunityDetails of oppurtunityDetails; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/oppurtunity-details', oppurtunityDetails.id, 'view']">{{ oppurtunityDetails.id }}</a>
+          </td>
+          <td>{{ oppurtunityDetails.crmOppurtunityID }}</td>
+          <td>{{ oppurtunityDetails.oppurtunityCreatedDate | formatMediumDate }}</td>
+          <td>{{ oppurtunityDetails.crmCustomerID }}</td>
+          <td>{{ oppurtunityDetails.bdmName }}</td>
+          <td>{{ oppurtunityDetails.bdmID }}</td>
+          <td>{{ oppurtunityDetails.dseID }}</td>
+          <td>{{ oppurtunityDetails.dseName }}</td>
+          <td>{{ oppurtunityDetails.accountType }}</td>
+          <td>{{ oppurtunityDetails.accountName }}</td>
+          <td>{{ oppurtunityDetails.accountSite }}</td>
+          <td>{{ oppurtunityDetails.vehicleClass }}</td>
+          <td>{{ oppurtunityDetails.vehicleVariant }}</td>
+          <td>{{ oppurtunityDetails.engineCapacity }}</td>
+          <td>{{ oppurtunityDetails.fuelTankCapacity }}</td>
+          <td>{{ oppurtunityDetails.wheelBase }}</td>
+          <td>{{ oppurtunityDetails.power }}</td>
+          <td>{{ oppurtunityDetails.gvwWeight }}</td>
+          <td>{{ oppurtunityDetails.payloadWeight }}</td>
+          <td>{{ oppurtunityDetails.exShowRoomPrice }}</td>
+          <td>{{ oppurtunityDetails.onRoadPrice }}</td>
+          <td>{{ oppurtunityDetails.lob }}</td>
+          <td>{{ oppurtunityDetails.ppl }}</td>
+          <td>{{ oppurtunityDetails.pl }}</td>
+          <td>
+            <div *ngIf="oppurtunityDetails.financierSyncStatus">
+              <a [routerLink]="['/fni-to-financier-sync-status', oppurtunityDetails.financierSyncStatus?.id, 'view']">{{
+                oppurtunityDetails.financierSyncStatus?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/oppurtunity-details', oppurtunityDetails.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/oppurtunity-details', oppurtunityDetails.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(oppurtunityDetails)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
